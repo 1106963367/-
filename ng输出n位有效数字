@@ -1,0 +1,17 @@
+#include <stdio.h>
+int main()
+{
+	double m,h;
+	scanf("%lf %lf",&m,&h);
+	double BMI;
+	BMI=m/(h*h);
+	if( BMI<18.5 ){
+		printf("Underweight\n");
+	}else if( BMI>24 ){
+		printf("%.6g\n",BMI);
+		printf("Overweight\n");
+	}else {
+		printf("Normal");
+	}
+	
+}
