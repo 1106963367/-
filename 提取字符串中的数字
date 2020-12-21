@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+	char chuan[100];
+	gets(chuan);
+	int i,j,k,count=0;
+	int a[100];
+	int len=strlen(chuan);
+	for( i=0; i<len; i++ ){
+		while( chuan[i] && ( chuan[i]<'0' || chuan[i]>'9')){
+			i++;
+		}
+		if( chuan[i] ){
+			j=i;
+			k=i+1;
+			a[count]=chuan[i]-'0';
+			
+			while( chuan[k]>='0' && chuan[k]<='9'){
+				a[count]= 10*a[count]+(chuan[k]-'0');
+				k++;
+			}
+			
+			i=k;
+			count++;
+		}
+		else
+		   break;
+	}
+	printf("共计%d个整数：",count);
+	for( i=0; i<count; i++ ){
+		printf("%d ",a[i]);
+	}printf("\n");
+	
+	return 0;
+} 
