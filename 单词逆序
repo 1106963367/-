@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <string.h>
+#define t 100
+int main()
+{ 
+	char ch[t];
+	int i,q,p=0,j,a=0,b;
+	while( (b=getchar())!='\n' ){
+		ch[a]=b;
+		a++;
+	}
+	int len=strlen(ch);
+	//printf("%d\n",len);
+	for( i=0;i<len;i++){
+		while( ch[i]>='A' && ch[i]<='z' ){                     //起始 
+			q=i;
+			while( ch[q+p]>='A' && ch[q+p]<='z' ){
+				p++;
+			}
+			for( j=q+p-1; j>q-1; j--){
+				printf("%c",ch[j]);
+			}
+			i=q+p;
+			p=0;
+		}
+		if( ch[i]<'A' || ch[i]>'z' ){
+			printf("%c",ch[i]);
+		}
+
+	}
+	
+	return 0;
+} 
