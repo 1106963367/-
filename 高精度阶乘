@@ -1,0 +1,44 @@
+#include<stdio.h>
+#define MAX 100000
+
+void Print_Factorial(int N,int a[]);
+
+int main(void){
+	int n;
+	int num[MAX];	//创建数组用于存储结果
+	
+	scanf("%d",&n);
+	Print_Factorial(n,num);
+	
+	return 0;
+}
+
+void Print_Factorial(int N,int a[]){
+	int i,j;	
+	int temp;	
+	int digit;	// 数的位数(输出时需要)
+	int carry;	// 乘法运算的进位数
+	
+	digit = 1;
+	carry = 0;
+	a[1] = 1;
+	
+	for(i = 2; i <= N; i++){	//1已经初始化，因此从2开始
+		for(j = 1; j <= digit; j++){
+			temp = a[j] * i + carry;
+			a[j] = temp % 10;	//更新当前位置的值
+			carry = temp / 10;	//计算进位数
+			}
+		while(carry){	//将多余的进位数继续写入数组
+			a[j] = carry % 10;	//这里直接用j是由于for循环结束时还加了一次
+			carry = carry / 10;
+			j++;
+			}
+		digit = j - 1;	//实际位数比j少1
+		}
+	
+	//逆序输出结果
+	for(i = digit; i >=1 ; i--)
+		printf("%d",a[i]);
+}
+	
