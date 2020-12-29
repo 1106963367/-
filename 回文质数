@@ -1,0 +1,28 @@
+#include <stdio.h>
+int main()
+{
+	int m,n;
+	scanf("%d %d",&m,&n);
+	int i,j,q=0,p=0,num;
+	for( i=m; i<=n; i++ ){
+		for( j=2; j<i; j++ ){
+			if( i%j==0 ){
+				q=1;
+				break;
+			}
+		}
+		num=i;
+		if( q==0 ){
+			while( num>0 ){
+				p=p*10+num%10;
+				num=num/10;
+			}
+			if( p==i ){
+				printf("%d\n",i);
+			}
+		}
+		q=0;
+		p=0;
+	}
+	return 0;
+}
