@@ -1,0 +1,141 @@
+#include <stdio.h>
+int main()
+{
+	int a,b,c,i,t;
+	scanf("%d/%d/%d",&a,&b,&c);
+	if((a+2000)%400==0||((a+2000)%4==0&&(a+2000)%100!=0)) t=1;
+		if(a>12||a==c)
+	{
+		switch(b)
+		{ 
+		case 1: printf("January");break;
+		case 2: printf("February");break;
+		case 3: printf("March");break;
+		case 4: printf("April");break;
+		case 5: printf("May");break;
+		case 6: printf("June");break;
+		case 7: printf("July");break;
+		case 8: printf("August");break;
+		case 9: printf("September");break;
+		case 10: printf("October");break;
+		case 11: printf("November");break;
+		case 12: printf("December");break;
+		}
+		printf(" %d, %d\n",c,a+2000);
+	}
+	else if(c>30||(b==29&&c!=2)||((b==4||b==6||b==9||b==11)&&c==31)||(t==1&&b==31)||(t==1&&b==30)||(t==0&&b==31)||(t==0&&b==30)||(t==0&&b==29))
+	{
+		switch(a)
+		{ 	
+		case 1: printf("January");break;
+		case 2: printf("February");break;
+		case 3: printf("March");break;
+		case 4: printf("April");break;
+		case 5: printf("May");break;
+		case 6: printf("June");break;
+		case 7: printf("July");break;
+		case 8: printf("August");break;
+		case 9: printf("September");break;
+		case 10: printf("October");break;
+		case 11: printf("November");break;
+		case 12: printf("December");break;
+		}
+		printf(" %d, %d\n",b,c+2000);
+	}
+else{
+		int m1,d1,y1,m2,d2,y2,count=0;
+		if( c<a ){
+		  m1=a;
+		  d1=b;
+		  y1=c;
+		  y2=a;
+		  m2=b;
+		  d2=c;
+	    }else{
+	      m2=a;
+		  d2=b;
+		  y2=c;
+		  y1=a;
+		  m1=b;
+		  d1=c;
+	    }
+	    
+	if( (y1%4==0 && y1%100!=0) || y1%400==0 ){
+	    switch( m1 ){
+			case 1: count=d1; break;
+			case 2: count=31+d1; break;
+			case 3: count=60+d1; break;
+			case 4: count=91+d1; break;
+			case 5: count=121+d1; break;
+			case 6: count=152+d1; break;
+			case 7: count=182+d1; break;
+			case 8: count=213+d1; break;
+			case 9: count=244+d1; break;
+			case 10:count=274+d1; break;
+			case 11:count=305+d1; break;
+			case 12:count=335+d1; break;
+		}
+		count=366-count;
+	    }else{
+	    	switch( m1 ){
+			case 1: count=d1; break;
+			case 2: count=31+d1; break;
+			case 3: count=59+d1; break;
+			case 4: count=90+d1; break;
+			case 5: count=120+d1; break;
+			case 6: count=151+d1; break;
+			case 7: count=181+d1; break;
+			case 8: count=212+d1; break;
+			case 9: count=243+d1; break;
+			case 10:count=273+d1; break;
+			case 11:count=304+d1; break;
+			case 12:count=334+d1; break;
+		}
+		count=365-count;
+	    }
+	
+	for( i=2001+y1; i<2000+y2; i++ ){
+		if( (i%4==0 && i%100!=0) || i%400==0 ){
+			count=count+366;
+		}else{
+			count=count+365;
+		}
+	}
+	
+	if( (y2%4==0 && y2%100!=0) || y2%400==0 ){
+			switch( m2 ){
+			case 1: count+=d2; break;
+			case 2: count+=31+d2; break;
+			case 3: count+=60+d2; break;
+			case 4: count+=91+d2; break;
+			case 5: count+=121+d2; break;
+			case 6: count+=152+d2; break;
+			case 7: count+=182+d2; break;
+			case 8: count+=213+d2; break;
+			case 9: count+=244+d2; break;
+			case 10:count+=274+d2; break;
+			case 11:count+=305+d2; break;
+			case 12:count+=335+d2; break;
+		}
+	}else{
+		switch( m2 ){
+			case 1: count+=d2; break;
+			case 2: count+=31+d2; break;
+			case 3: count+=59+d2; break;
+			case 4: count+=90+d2; break;
+			case 5: count+=120+d2; break;
+			case 6: count+=151+d2; break;
+			case 7: count+=181+d2; break;
+			case 8: count+=212+d2; break;
+			case 9: count+=243+d2; break;
+			case 10:count+=273+d2; break;
+			case 11:count+=304+d2; break;
+			case 12:count+=334+d2; break;
+		}
+	}
+	    printf("%d\n",count);
+	
+	    
+	}
+	return 0;	
+}
