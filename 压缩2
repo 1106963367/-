@@ -1,0 +1,43 @@
+#include <stdio.h>
+int main()
+{
+	char a[1000][1000];
+	int i=0;
+	while( scanf("%s",&a[i]) !=EOF ){
+		i++;
+	}
+	int n=i;
+	printf("%d",n);
+	int flag=0,count=0;
+	for( i=0; i<n; i++ ){
+		for( int j=0; j<n; j++ ){
+			
+			if( a[i][j]=='0'){
+				if(flag) 
+				{
+					printf(" %d", count);
+					flag = 0;
+					count = 0;
+				}
+				count++;
+			}
+			else
+			{
+				if(!flag) //在判断字符是否为'0'的状态下,出现了'1',则输出结果 
+				{
+					printf(" %d", count);
+					count = 0;
+					flag = 1;
+				}
+				count++;
+			}
+			
+		}
+	}
+	if(count > 0)
+	{
+		printf(" %d", count);  
+	}
+	
+	return 0;
+}
