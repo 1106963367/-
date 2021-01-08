@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <string.h>
+const int prime[25]={2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97};
+int main()
+{
+	char ch[100];
+	scanf("%s",ch);
+	int i,zi[26]={0};
+	int len=strlen(ch);
+	for( i=0; i<len; i++ ){
+		zi[ch[i]-'a']++;
+	}
+	int max=0,min=100;
+	for( i=0; i<26;i++ ){
+		if( zi[i]>max ){
+			max=zi[i];
+		}
+		if( zi[i]<min && zi[i]>0 ){
+			min=zi[i];
+		}
+	}
+	if( min==0 ){
+		min=1;
+	}
+	for( i=0;i<25;i++){//遍历25个质数
+		if(max-min==prime[i]){//满足条件了
+			printf("Lucky Word\n%d",max-min);//输出，注意格式
+			return 0;//返回
+		}
+	}
+	printf("No Answer\n0");
+	return 0;
+}
