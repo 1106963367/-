@@ -1,0 +1,76 @@
+#include<cstdio>
+#include<cstring>
+#include<cmath>
+using namespace std;
+char fu;
+long long gui,a,b,ans,n,lngth,spc,lll,fa,fb;
+bool whch;
+void jisuan()
+{
+	int p=a,q=b,pq=ans,e=0;
+
+	if(p<0)e++;
+	if(q<0)e++;
+	if(ans<0)e++;
+
+	p=abs(p),q=abs(q),pq=abs(pq);
+
+	if(p==0)e++;
+	if(q==0)e++;
+	if(pq==0)e++;
+	 
+	while(p)p/=10,e++;
+	while(q)q/=10,e++;
+	while(pq)pq/=10,e++;
+	lll=e+2;
+			
+}
+int main()
+{
+    scanf("%lld\n",&n);
+    for(int i=0;i<n;i++)
+    {
+        whch=lngth=a=b=spc=lll=0,fa=fb=0;
+        while(scanf("%c",&fu)&&fu!='\n')
+        {
+            if(lngth==0) 
+            {
+                if(fu>'9'||fu<'0')gui=fu-'a';
+                else spc++; 
+            }
+            if(whch&&fu=='-')fb=1;
+            if(!whch&&fu=='-')fa=1;
+            if(fu>='0'&&fu<='9')
+            {
+                if(!whch)a=a*10+(int)fu-'0';
+                else b=b*10+(int)fu-'0'; 
+            }
+            else if(fu==' ')
+            {
+                spc++;
+                if(spc==2)whch=1;
+            }
+            lngth++;
+        }
+        a=fa?-a:a;
+        b=fb?-b:b;
+        switch(gui) 
+        {
+            case 0:ans=a+b;break;
+            case 1:ans=a-b;break;
+            case 2:ans=a*b;break;
+        }
+        jisuan();
+        
+        printf("%lld",a);
+        switch(gui)
+        {
+            case 0:putchar('+');break;
+            case 1:putchar('-');break;
+            case 2:putchar('*');break;
+        }
+        printf("%lld=%lld\n",b,ans);
+        printf("%lld\n",lll);
+    }
+     
+}
