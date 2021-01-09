@@ -1,0 +1,34 @@
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+	char str[1000];
+	gets(str);
+    
+	int ans=0;
+	for (int i=0;i<strlen(str);i++)//枚举字符串时边界时0~size - 1（size是长度哦）
+	{
+		if(str[i]=='a'||str[i]=='d'||str[i]=='g'||str[i]=='j'||str[i]=='m'||str[i]=='p'||str[i]=='t'||str[i]=='w'||str[i]==' ')
+		{
+			ans++;//ans+=1是一样的效果
+		}
+		
+		if(str[i]=='b'||str[i]=='e'||str[i]=='h'||str[i]=='k'||str[i]=='n'||str[i]=='q'||str[i]=='u'||str[i]=='x')
+		{
+			ans += 2;
+		}
+		
+		if(str[i]=='c'||str[i]=='f'||str[i]=='i'||str[i]=='l'||str[i]=='o'||str[i]=='r'||str[i]=='v'||str[i]=='y')
+		{
+			ans+=3;
+		}
+		
+		if(str[i]=='s'||str[i]=='z')
+		{
+			ans+=4;
+		}
+	}
+	printf("%d\n",ans);
+	
+	return 0;
+}
