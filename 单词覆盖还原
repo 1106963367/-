@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+	int boy=0,girl=0;
+	char ch[1000];
+	gets(ch);
+	int len=strlen(ch);
+	int i;
+	for( i=0; i<len; i++ ){
+		if(ch[i]=='b'){
+			boy++;
+		}
+		if( ch[i]=='o' && ch[i-1]!='b' ){
+			boy++;
+		}
+		if( ch[i]=='y' && ch[i-1]!='o' ){
+			boy++;
+		}
+		if( ch[i]=='g' ){
+			girl++;
+		}
+		if( ch[i]=='i' && ch[i-1]!='g' ){
+			girl++;
+		}
+		if( ch[i]=='r' && ch[i-1]!='i' ){
+			girl++;
+		}
+		if( ch[i]=='l' && ch[i-1]!='r' ){
+			girl++;
+		}
+		
+	}
+	printf("%d\n%d\n",boy,girl);
+	return 0;
+} 
