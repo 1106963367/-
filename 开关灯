@@ -1,0 +1,29 @@
+/*memset:作用是在一段内存块中填充某个给定的值，它是对较大结构体或数组进行清零操作的一种最快方法。*/
+#include<stdio.h>
+#include<string.h>
+#define maxn 1010
+int a[maxn];
+int main()
+{
+	int n,k,first=1;				//n为灯编号，k为人数
+	memset(a,0,sizeof(a));			//快速数组清零，此时所有灯为0及false，all灯关
+	scanf("%d%d",&n,&k);
+	for(int i=1;i<=k;i++)
+		for(int j=1;j<=n;j++)
+			if(j%i==0) a[j]=!a[j];
+/*第一个人经过n盏灯时，因为是n%1所以均等于0，非关赋值后全为true,全部打开
+  第二个人经过n盏灯时，因为是n%2所以只有n为2的倍数时才等于0，此时2的倍数的灯非关赋值，全部打开
+  第三个人经过n盏灯时，因为是n%3所以只有n为3的倍数时才等于0，此时3的倍数的灯，若为关则非关赋值灯打开，若为开则非开赋值灯关闭
+  以此类推*/
+	for(int t=1;t<=n;t++)
+		if(a[t])					//此时判断真假，若为真(开灯)的序号，直接进入if大循环，若为假(关灯)排除。
+		{
+			if(first)	first=0;	//因为first=1,则真(开)灯进入if，然后first=0,输出灯序号。因为改变first为假所以之后序号灯，均进入else
+			else printf(" ");		//之后进入else的灯都先输出空格，再输出序号
+			printf("%d",t);
+		}
+	printf("\n");
+	return 0;
+}
+//first的作用就是使第一个输出的序号不带空格，之后每输出一个序号前面加个空格
+
